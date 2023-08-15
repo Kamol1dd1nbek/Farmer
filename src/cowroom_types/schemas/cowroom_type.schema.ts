@@ -2,7 +2,6 @@ import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
 import { HydratedDocument } from 'mongoose';
 
 export type CowroomTypeDocument = HydratedDocument<CowroomType>;
-
 @Schema({ versionKey: false })
 export class CowroomType {
   @Prop({
