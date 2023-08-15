@@ -8,23 +8,23 @@ import { UpdateCowroomTypeDto } from './dto/update-cowroom_type.dto';
 @Injectable()
 export class CowroomTypesService {
   constructor(
-    @InjectModel(CowroomType.name) private roleModel: Model<CowroomType> 
+    @InjectModel(CowroomType.name) private cowroomTypeModel: Model<CowroomType> 
   ) {}
 
   async create(createCowroomTypeDto: CreateCowroomTypeDto): Promise<CowroomType> {
     let { name } = createCowroomTypeDto;
     name = name.toUpperCase();
-    const role = await this.roleModel.create({ ...createCowroomTypeDto, name });
-    return role;
+    const cowroomType = await this.cowroomTypeModel.create({ ...createCowroomTypeDto, name });
+    return cowroomType;
   }
 
   async findAll(): Promise<CowroomType[]> {
-    const roles = await this.roleModel.find({});
+    const cowroomTypes = await this.cowroomTypeModel.find({});
 
-    if ( roles.length === 0 ) {
+    if ( cowroomTypes.length === 0 ) {
       throw new NotFoundException("CowroomTypes not found");
     }
-    return roles;
+    return cowroomTypes;
   }
 
   async findOne(id: string): Promise<CowroomType> {
@@ -33,11 +33,11 @@ export class CowroomTypesService {
       throw new BadRequestException("Invalid Id");
     }
 
-    const role = await this.roleModel.findById(id);
-    if ( !role ) {
+    const cowroomType = await this.cowroomTypeModel.findById(id);
+    if ( !cowroomType ) {
       throw new NotFoundException(`CowroomType not found this id: ${id}`);
     }
-    return role;
+    return cowroomType;
   }
 
   async update(id: string, updateCowroomTypeDto: UpdateCowroomTypeDto): Promise<CowroomType> {
@@ -46,7 +46,7 @@ export class CowroomTypesService {
       throw new BadRequestException("Invalid Id");
     }
 
-    const updatedCowroomType = await this.roleModel.findOneAndUpdate({ _id: id }, updateCowroomTypeDto, { new: true });
+    const updatedCowroomType = await this.cowroomTypeModel.findOneAndUpdate({ _id: id }, updateCowroomTypeDto, { new: true });
 
     if ( !updatedCowroomType ) {
       throw new NotFoundException("CowroomType not found");
@@ -60,7 +60,7 @@ export class CowroomTypesService {
       throw new BadRequestException("Invalid Id");
     }
 
-    const removedCowroomType = await this.roleModel.findOneAndDelete({ _id: id });
+    const removedCowroomType = await this.cowroomTypeModel.findOneAndDelete({ _id: id });
 
     if ( !removedCowroomType ) {
       throw new NotFoundException("CowroomType not found");
