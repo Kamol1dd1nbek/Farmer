@@ -4,6 +4,7 @@ import { AppService } from './app.service';
 import { RolesModule } from './roles/roles.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
+import { CowroomTypesModule } from './cowroom_types/cowroom_types.module';
 
 @Module({
   imports: [
@@ -12,7 +13,8 @@ import { MongooseModule } from '@nestjs/mongoose';
       isGlobal: true
     }),
     MongooseModule.forRoot(process.env.MONGO_DB),
-    RolesModule
+    RolesModule,
+    CowroomTypesModule
   ],
   controllers: [AppController],
   providers: [AppService],
