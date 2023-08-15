@@ -16,6 +16,11 @@ const start = async () => {
 
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('farm/docs', app, document);
+
+    const PORT = process.env.PORT || 3001;
+    app.listen(PORT, () => {
+      console.log(`Server is running on port: ${PORT}`);
+    })
   } catch (error) {
     console.log(error);
   }
