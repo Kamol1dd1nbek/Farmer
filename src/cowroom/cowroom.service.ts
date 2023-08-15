@@ -19,7 +19,7 @@ export class CowroomService {
   }
 
   async findAll(): Promise<Cowroom[]> {
-    const cowrooms = await this.cowroomModel.find({});
+    const cowrooms = await this.cowroomModel.find({}).populate("type_id");
 
     if ( cowrooms.length === 0 ) {
       throw new NotFoundException("Cowrooms not found");
@@ -33,7 +33,7 @@ export class CowroomService {
       throw new BadRequestException("Invalid Id");
     }
 
-    const cowroom = await this.cowroomModel.findById(id);
+    const cowroom = await this.cowroomModel.findById(id).populate("type_id");
     if ( !cowroom ) {
       throw new NotFoundException(`Cowroom not found this id: ${id}`);
     }
