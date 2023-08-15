@@ -1,9 +1,14 @@
 import { Module } from '@nestjs/common';
 import { CowroomTypesService } from './cowroom_types.service';
-import { CowroomTypesController } from './cowroom_types.controller';
+import { MongooseModule } from '@nestjs/mongoose';
+import { CowroomType, CowroomTypeSchema } from './schemas/cowroom_type.schema';
+import { CowroomsTypesController } from './cowroom_types.controller';
 
 @Module({
-  controllers: [CowroomTypesController],
+  imports: [
+    MongooseModule.forFeature([{ name: CowroomType.name, schema: CowroomTypeSchema }])
+  ],
+  controllers: [CowroomsTypesController],
   providers: [CowroomTypesService],
 })
 export class CowroomTypesModule {}
