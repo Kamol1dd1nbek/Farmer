@@ -17,6 +17,8 @@ const start = async () => {
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('farm/docs', app, document);
 
+    app.setGlobalPrefix("api");
+     
     const PORT = process.env.PORT || 3001;
     app.listen(PORT, () => {
       console.log(`Server is running on port: ${PORT}`);
