@@ -6,6 +6,7 @@ import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { CowroomTypesModule } from './cowroom_types/cowroom_types.module';
 import { CowroomModule } from './cowroom/cowroom.module';
+import { CattleModule } from './cattle/cattle.module';
 
 @Module({
   imports: [
@@ -16,7 +17,8 @@ import { CowroomModule } from './cowroom/cowroom.module';
     MongooseModule.forRoot(process.env.MONGO_DB),
     RolesModule,
     CowroomTypesModule,
-    CowroomModule
+    CowroomModule,
+    CattleModule
   ],
   controllers: [AppController],
   providers: [AppService],
