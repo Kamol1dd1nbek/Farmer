@@ -7,6 +7,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CowroomTypesModule } from './cowroom_types/cowroom_types.module';
 import { CowroomModule } from './cowroom/cowroom.module';
 import { CattleModule } from './cattle/cattle.module';
+import { HerdModule } from './herd/herd.module';
 
 @Module({
   imports: [
@@ -18,7 +19,8 @@ import { CattleModule } from './cattle/cattle.module';
     RolesModule,
     CowroomTypesModule,
     CowroomModule,
-    CattleModule
+    CattleModule,
+    HerdModule
   ],
   controllers: [AppController],
   providers: [AppService],

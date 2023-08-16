@@ -17,7 +17,7 @@ export class CattleService {
   }
 
   async findAll(): Promise<Cattle[]> {
-    const cattles = await this.cattleModel.find({}).populate("mother_id");
+    const cattles = await this.cattleModel.find({}).populate("mother_id").populate("herd_id");
 
     if ( cattles.length === 0 ) {
       throw new NotFoundException("Cattles not found");
@@ -31,7 +31,7 @@ export class CattleService {
       throw new BadRequestException("Invalid Id");
     }
 
-    const cattle = await this.cattleModel.findById(id).populate("mother_id");
+    const cattle = await this.cattleModel.findById(id).populate("mother_id").populate("herd_id");
     if ( !cattle ) {
       throw new NotFoundException(`Cattle not found this id: ${id}`);
     }

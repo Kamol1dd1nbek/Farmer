@@ -21,8 +21,8 @@ export class Cattle {
     age: number;
 
     @Prop({
-        type: String,
-        required: true,
+        type: Types.ObjectId,
+        ref: "Herd",
     })
     herd_id: string;
 
