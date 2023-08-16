@@ -13,7 +13,7 @@ export class Herd {
 
   @Prop({
     type: String,
-    required: true
+    required: true,
   })
   supervisor_id: string;
 }
