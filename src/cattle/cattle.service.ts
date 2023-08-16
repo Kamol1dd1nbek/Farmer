@@ -1,26 +1,68 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, NotFoundException, BadRequestException } from '@nestjs/common';
+import { InjectModel } from '@nestjs/mongoose';
+import { Model, isValidObjectId } from 'mongoose';
 import { CreateCattleDto } from './dto/create-cattle.dto';
 import { UpdateCattleDto } from './dto/update-cattle.dto';
+import { Cattle } from './schemas/cattle.schema';
 
 @Injectable()
 export class CattleService {
-  create(createCattleDto: CreateCattleDto) {
-    return 'This action adds a new cattle';
+  constructor(
+    @InjectModel(Cattle.name) private cattleModel: Model<Cattle> 
+  ) {}
+
+  async create(createCattleDto: CreateCattleDto): Promise<Cattle> {
+    const cattle = await this.cattleModel.create( createCattleDto );
+    return cattle;
   }
 
-  findAll() {
-    return `This action returns all cattle`;
+  async findAll(): Promise<Cattle[]> {
+    const cattles = await this.cattleModel.find({}).populate("mother_id");
+
+    if ( cattles.length === 0 ) {
+      throw new NotFoundException("Cattles not found");
+    }
+    return cattles;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} cattle`;
+  async findOne(id: string): Promise<Cattle> {
+    
+    if ( !isValidObjectId(id) ) {
+      throw new BadRequestException("Invalid Id");
+    }
+
+    const cattle = await this.cattleModel.findById(id).populate("mother_id");
+    if ( !cattle ) {
+      throw new NotFoundException(`Cattle not found this id: ${id}`);
+    }
+    return cattle;
   }
 
-  update(id: number, updateCattleDto: UpdateCattleDto) {
-    return `This action updates a #${id} cattle`;
+  async update(id: string, updateCattleDto: UpdateCattleDto): Promise<Cattle> {
+
+    if ( !isValidObjectId(id) ) {
+      throw new BadRequestException("Invalid Id");
+    }
+
+    const updatedCattle = await this.cattleModel.findOneAndUpdate({ _id: id }, updateCattleDto, { new: true });
+
+    if ( !updatedCattle ) {
+      throw new NotFoundException("Cattle not found");
+    }
+    return updatedCattle;
   }
 
-  remove(id: number) {
-    return `This action removes a #${id} cattle`;
+  async remove(id: string) {
+
+    if ( !isValidObjectId(id) ) {
+      throw new BadRequestException("Invalid Id");
+    }
+
+    const removedCattle = await this.cattleModel.findOneAndDelete({ _id: id });
+
+    if ( !removedCattle ) {
+      throw new NotFoundException("Cattle not found");
+    }
+    return removedCattle;
   }
 }

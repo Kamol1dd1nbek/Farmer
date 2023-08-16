@@ -1,5 +1,5 @@
 import { Schema, SchemaFactory, Prop } from "@nestjs/mongoose";
-import { HydratedDocument } from "mongoose";
+import { HydratedDocument, Types } from "mongoose";
 
 export type CattleDocument = HydratedDocument<Cattle>;
 
@@ -33,7 +33,8 @@ export class Cattle {
     is_bull: boolean;
 
     @Prop({
-        type: String
+        type: Types.ObjectId,
+        ref: "Cattle"
     })
     mother_id: string;
 }
