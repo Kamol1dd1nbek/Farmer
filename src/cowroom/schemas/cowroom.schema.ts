@@ -1,39 +1,39 @@
-import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { HydratedDocument, Types } from "mongoose";
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { HydratedDocument, Types } from 'mongoose';
 
 export type CowroomDocument = HydratedDocument<Cowroom>;
 
 @Schema({ versionKey: false })
 export class Cowroom {
-@Prop({
+  @Prop({
     type: String,
-    required: true
-})
-name: string;
+    required: true,
+  })
+  name: string;
 
-@Prop({
+  @Prop({
     type: Number,
-    required: true
-})
-width: number;
+    required: true,
+  })
+  width: number;
 
-@Prop({
+  @Prop({
     type: Number,
-    required: true
-})
-length: number;
+    required: true,
+  })
+  length: number;
 
-@Prop({
+  @Prop({
     type: Number,
-    required: true
-})
-height: number;
+    required: true,
+  })
+  height: number;
 
-@Prop({
+  @Prop({
     type: Types.ObjectId,
-    ref: "CowroomType"
-})
-type_id: Types.ObjectId;
+    ref: 'CowroomType',
+  })
+  type_id: Types.ObjectId;
 }
 
 export const CowroomSchema = SchemaFactory.createForClass(Cowroom);

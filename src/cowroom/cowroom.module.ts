@@ -6,7 +6,7 @@ import { Cowroom, CowroomSchema } from './schemas/cowroom.schema';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{ name: Cowroom.name, schema: CowroomSchema }])
+    MongooseModule.forFeature([{ name: Cowroom.name, schema: CowroomSchema }]),
   ],
   controllers: [CowroomController],
   providers: [CowroomService],
