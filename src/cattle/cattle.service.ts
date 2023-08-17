@@ -12,6 +12,19 @@ export class CattleService {
   ) {}
 
   async create(createCattleDto: CreateCattleDto): Promise<Cattle> {
+
+    if (
+      !isValidObjectId(createCattleDto.herd_id) 
+    ) {
+      throw new BadRequestException("Invalid Id");
+    }
+
+    if ( createCattleDto.mother_id ) {
+      if (!isValidObjectId(createCattleDto.mother_id)) {
+        throw new BadRequestException("Invalid Id");
+      }
+    }
+
     const cattle = await this.cattleModel.create( createCattleDto );
     return cattle;
   }

@@ -8,6 +8,9 @@ import { CowroomTypesModule } from './cowroom_types/cowroom_types.module';
 import { CowroomModule } from './cowroom/cowroom.module';
 import { CattleModule } from './cattle/cattle.module';
 import { HerdModule } from './herd/herd.module';
+import { MilkModule } from './milk/milk.module';
+import { AuthModule } from './auth/auth.module';
+import { WorkerModule } from './worker/worker.module';
 
 @Module({
   imports: [
@@ -20,7 +23,10 @@ import { HerdModule } from './herd/herd.module';
     CowroomTypesModule,
     CowroomModule,
     CattleModule,
-    HerdModule
+    HerdModule,
+    MilkModule,
+    AuthModule,
+    WorkerModule
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -15,7 +15,7 @@ export class CreateCattleDto {
     @Max(30)
     age: number;
 
-    @ApiProperty({ example: "fgg56gh546ty", description: "| Cattle: herd" })
+    @ApiProperty({ example: "64dc9022c2edf5c6c8b9fbfb", description: "| Cattle: herd" })
     @IsNotEmpty()
     @IsString()
     @MinLength(5)

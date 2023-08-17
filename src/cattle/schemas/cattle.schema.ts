@@ -28,7 +28,8 @@ export class Cattle {
 
     @Prop({
         type: Boolean,
-        required: true
+        required: true,
+        default: false
     })
     is_bull: boolean;
 
