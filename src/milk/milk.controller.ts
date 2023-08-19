@@ -19,16 +19,16 @@ export class MilkController {
 
   @Get(':id')
   findOne(@Param('id') id: string) {
-    return this.milkService.findOne(+id);
+    return this.milkService.findOne(id);
   }
 
   @Patch(':id')
   update(@Param('id') id: string, @Body() updateMilkDto: UpdateMilkDto) {
-    return this.milkService.update(+id, updateMilkDto);
+    return this.milkService.update(id, updateMilkDto);
   }
 
   @Delete(':id')
   remove(@Param('id') id: string) {
-    return this.milkService.remove(+id);
+    return this.milkService.remove(id);
   }
 }

@@ -25,7 +25,7 @@ export class MilkService {
     return this.milkModel.findByIdAndUpdate(id, updateMilkDto);
   }
 
-  remove(id: number) {
+  remove(id: string) {
     return this.milkModel.deleteOne({ _id: id });
   }
 }

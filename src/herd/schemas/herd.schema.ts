@@ -13,7 +13,7 @@ export class Herd {
 
   @Prop({
     type: String,
-    required: true,
+    ref: "Worker"
   })
   supervisor_id: Types.ObjectId;
 }

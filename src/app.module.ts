@@ -11,6 +11,7 @@ import { HerdModule } from './herd/herd.module';
 import { MilkModule } from './milk/milk.module';
 import { AuthModule } from './auth/auth.module';
 import { WorkerModule } from './worker/worker.module';
+import { TechInCowroomModule } from './tech_in_cowroom/tech_in_cowroom.module';
 
 @Module({
   imports: [
@@ -26,7 +27,8 @@ import { WorkerModule } from './worker/worker.module';
     HerdModule,
     MilkModule,
     AuthModule,
-    WorkerModule
+    WorkerModule,
+    TechInCowroomModule
   ],
   controllers: [AppController],
   providers: [AppService],

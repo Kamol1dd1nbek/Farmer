@@ -21,7 +21,7 @@ export class HerdService {
   }
 
   async findAll(): Promise<Herd[]> {
-    const herds = await this.herdModel.find({}).populate('supervisor_id');
+    const herds = await this.herdModel.find({}).populate('supervisor_id', "_id full_name phone email");
 
     if (herds.length === 0) {
       throw new NotFoundException('Herds not found');
@@ -34,7 +34,7 @@ export class HerdService {
       throw new BadRequestException('Invalid Id');
     }
 
-    const herd = await this.herdModel.findById(id).populate('supervisor_id');
+    const herd = await this.herdModel.findById(id).populate('supervisor_id', "_id full_name phone email");
     if (!herd) {
       throw new NotFoundException(`Herd not found this id: ${id}`);
     }
