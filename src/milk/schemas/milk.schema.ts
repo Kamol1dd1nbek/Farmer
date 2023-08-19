@@ -6,8 +6,8 @@ export type MilkDocument = HydratedDocument<Milk>;
 @Schema({ versionKey: false })
 export class Milk {
   @Prop({
-    type: String,
-    required: true,
+    type: Types.ObjectId,
+    ref: "Cattle"
   })
   cattle_id: Types.ObjectId;
 
@@ -31,7 +31,7 @@ export class Milk {
 
   @Prop({
     type: Types.ObjectId,
-    required: true,
+    ref: "TechWorker"
   })
   tech_worker_id: Types.ObjectId;
 }
