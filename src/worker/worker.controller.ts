@@ -1,30 +1,33 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { WorkerService } from './worker.service';
 import { UpdateWorkerDto } from './dto/update-worker.dto';
+import { ApiOperation } from '@nestjs/swagger';
 
 @Controller('worker')
 export class WorkerController {
   constructor(private readonly workerService: WorkerService) {}
 
-  @Post()
-
+  @ApiOperation({ summary: "| Find all workers" })
   @Get()
-  findAll() {
-    return this.workerService.findAll();
+  findAllWorkers() {
+    return this.workerService.findAllWorkers();
   }
 
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.workerService.findOne(+id);
+  @ApiOperation({ summary: "| Find workers" })
+  @Get(":id")
+  findWorker(@Param("id") id: string) {
+    return this.workerService.findWorker(id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateWorkerDto: UpdateWorkerDto) {
-    return this.workerService.update(+id, updateWorkerDto);
+  @ApiOperation({ summary: "| Delete Worker" })
+  @Delete(":id")
+  remove(@Param("id") id: string) {
+    return this.workerService.removeWorker(id);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.workerService.remove(+id);
+  @ApiOperation({ summary: "| Update Worker" })
+  @Patch(":id")
+  updateWorker(@Param("id") id: string, @Body() updateWorkerDto: UpdateWorkerDto) {
+    return this.workerService.updateWorker(id, updateWorkerDto);
   }
 }
