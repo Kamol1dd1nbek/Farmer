@@ -1,6 +1,7 @@
-import { Prop, Schema } from "@nestjs/mongoose";
-import { Types } from "mongoose";
+import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
+import { HydratedDocument, Types } from "mongoose";
 
+export type TechInCowroomDocument = HydratedDocument<TechInCowroom>;
 @Schema({ versionKey: false })
 export class TechInCowroom {
     @Prop({
@@ -21,3 +22,5 @@ export class TechInCowroom {
     })
     incharge_id: Types.ObjectId;
 }
+
+export const TechInCowroomSchema = SchemaFactory.createForClass(TechInCowroom);
