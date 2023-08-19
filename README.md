@@ -1,6 +1,6 @@
-``` Project schema
+ Project schema: 
   https://drawsql.app/teams/savat/diagrams/farm-2
-```
+
 
 <p align="center">
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
