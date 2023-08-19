@@ -15,7 +15,7 @@ export class Technique {
     type: String,
     required: true,
   })
-  desciption: string;
+  description: string;
 }
 
 export const TechniqueSchema = SchemaFactory.createForClass(Technique);
