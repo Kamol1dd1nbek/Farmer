@@ -31,7 +31,7 @@ export class Milk {
 
   @Prop({
     type: Types.ObjectId,
-    ref: "TechWorker"
+    ref: "TechInCowroom"
   })
   tech_worker_id: Types.ObjectId;
 }
