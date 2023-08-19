@@ -1,6 +1,4 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { RolesModule } from './roles/roles.module';
 import { ConfigModule } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
@@ -13,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 import { WorkerModule } from './worker/worker.module';
 import { TechInCowroomModule } from './tech_in_cowroom/tech_in_cowroom.module';
 import { TechniqueModule } from './technique/technique.module';
+import { JwtModule } from '@nestjs/jwt';
 
 @Module({
   imports: [
@@ -20,6 +19,7 @@ import { TechniqueModule } from './technique/technique.module';
       envFilePath: ".env",
       isGlobal: true
     }),
+    JwtModule.register({}),
     MongooseModule.forRoot(process.env.MONGO_DB),
     RolesModule,
     CowroomTypesModule,
@@ -32,7 +32,7 @@ import { TechniqueModule } from './technique/technique.module';
     TechInCowroomModule,
     TechniqueModule
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}

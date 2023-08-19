@@ -2,7 +2,9 @@ import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/commo
 import { MilkService } from './milk.service';
 import { CreateMilkDto } from './dto/create-milk.dto';
 import { UpdateMilkDto } from './dto/update-milk.dto';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags("Milk")
 @Controller('milk')
 export class MilkController {
   constructor(private readonly milkService: MilkService) {}
