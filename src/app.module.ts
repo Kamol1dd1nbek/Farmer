@@ -16,8 +16,8 @@ import { JwtModule } from '@nestjs/jwt';
 @Module({
   imports: [
     ConfigModule.forRoot({
-      envFilePath: ".env",
-      isGlobal: true
+      envFilePath: '.env',
+      isGlobal: true,
     }),
     JwtModule.register({}),
     MongooseModule.forRoot(process.env.MONGO_DB),
@@ -30,7 +30,7 @@ import { JwtModule } from '@nestjs/jwt';
     AuthModule,
     WorkerModule,
     TechInCowroomModule,
-    TechniqueModule
+    TechniqueModule,
   ],
   controllers: [],
   providers: [],

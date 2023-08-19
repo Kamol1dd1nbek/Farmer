@@ -5,7 +5,6 @@ import { SwaggerModule } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
 import * as cookieParser from 'cookie-parser';
 
-
 const start = async () => {
   try {
     const app = await NestFactory.create(AppModule);
@@ -20,13 +19,13 @@ const start = async () => {
     const document = SwaggerModule.createDocument(app, config);
     SwaggerModule.setup('farm/docs', app, document);
 
-    app.setGlobalPrefix("api");
+    app.setGlobalPrefix('api');
     app.use(cookieParser());
-     
+
     const PORT = process.env.PORT || 3001;
     app.listen(PORT, () => {
       console.log(`Server is running on port: ${PORT}`);
-    })
+    });
   } catch (error) {
     console.log(error);
   }
