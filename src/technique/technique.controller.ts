@@ -5,7 +5,7 @@ import { UpdateTechniqueDto } from './dto/update-technique.dto';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 
 @ApiTags("Techniques")
-@Controller('technique')
+@Controller('tech')
 export class TechniqueController {
   constructor(private readonly techniqueService: TechniqueService) {}
 

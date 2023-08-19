@@ -16,7 +16,7 @@ export class TechniqueService {
   ) {}
 
   create(createTechniqueDto: CreateTechniqueDto) {
-    return 'This action adds a new technique';
+    return this.techModel.create(createTechniqueDto);
   }
 
   async findAll(): Promise<Technique[]> {
