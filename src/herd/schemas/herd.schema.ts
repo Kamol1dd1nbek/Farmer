@@ -1,5 +1,5 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
-import { HydratedDocument } from 'mongoose';
+import { HydratedDocument, Types } from 'mongoose';
 
 export type HerdDocument = HydratedDocument<Herd>;
 
@@ -15,7 +15,7 @@ export class Herd {
     type: String,
     required: true,
   })
-  supervisor_id: string;
+  supervisor_id: Types.ObjectId;
 }
 
 export const HerdSchema = SchemaFactory.createForClass(Herd);

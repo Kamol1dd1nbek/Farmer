@@ -1,8 +1,9 @@
 import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
 import { WorkerService } from './worker.service';
 import { UpdateWorkerDto } from './dto/update-worker.dto';
-import { ApiOperation } from '@nestjs/swagger';
+import { ApiOperation, ApiTags, ApiProperty } from '@nestjs/swagger';
 
+@ApiTags("Worker")
 @Controller('worker')
 export class WorkerController {
   constructor(private readonly workerService: WorkerService) {}
