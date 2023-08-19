@@ -12,6 +12,7 @@ import { MilkModule } from './milk/milk.module';
 import { AuthModule } from './auth/auth.module';
 import { WorkerModule } from './worker/worker.module';
 import { TechInCowroomModule } from './tech_in_cowroom/tech_in_cowroom.module';
+import { TechniqueModule } from './technique/technique.module';
 
 @Module({
   imports: [
@@ -28,7 +29,8 @@ import { TechInCowroomModule } from './tech_in_cowroom/tech_in_cowroom.module';
     MilkModule,
     AuthModule,
     WorkerModule,
-    TechInCowroomModule
+    TechInCowroomModule,
+    TechniqueModule
   ],
   controllers: [AppController],
   providers: [AppService],
